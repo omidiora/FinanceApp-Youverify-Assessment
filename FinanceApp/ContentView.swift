@@ -1,24 +1,50 @@
-//
-//  ContentView.swift
-//  FinanceApp
-//
-//  Created by Omidiora Emmanuel on 14/02/2026.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @State private var screen: Screen = .splash
+
+    enum Screen {
+        case splash, onboarding, signUp, verification, signIn, setPasscode, home  // removed accountSetup
+    }
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        switch screen {
+        case .splash:
+            SplashView {
+                screen = .onboarding
+            }
+        case .onboarding:
+            OnboardingView {
+                screen = .signUp
+            } onSkip: {
+                screen = .signIn
+            }
+        case .signUp:
+            SignUpView {
+                screen = .verification
+            } onLoginTap: {
+                screen = .signIn
+            }
+        case .verification:
+            VerificationView {
+                screen = .setPasscode
+            }
+        case .signIn:
+            SignInView {
+                screen = .home
+            }
+        case .setPasscode:
+            SetPasscodeView {
+                screen = .home   // go directly to home instead of accountSetup
+            }
+        case .home:
+            HomeView()
         }
-        .padding()
     }
 }
+
 
 #Preview {
     ContentView()
 }
+
