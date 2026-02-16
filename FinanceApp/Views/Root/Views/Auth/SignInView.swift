@@ -73,10 +73,14 @@ struct SignInView: View {
                                 .foregroundColor(.secondary)
                                 .fontWeight(.semibold)
                             
-                            Text("Sign Up")
-                                .foregroundColor(.multipleGreen)
-                                .bold()
-                                .underline(true, color: .multipleGreen)
+                            NavigationLink(destination: SignInView(onComplete: {})) {
+                                Text("Sign Up")
+                                    .foregroundColor(.multipleGreen)
+                                    .bold()
+                                    .underline(true, color: .multipleGreen)
+                            
+                        
+                                }
                         }
                         .font(.subheadline)
                         .transition(.opacity)

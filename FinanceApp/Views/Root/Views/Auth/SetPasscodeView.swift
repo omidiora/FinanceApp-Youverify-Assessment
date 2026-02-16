@@ -8,22 +8,26 @@ struct SetPasscodeView: View {
     
     var body: some View {
         VStack(spacing: 40) {
-            Text("Welcome Back")
-                .font(.title2)
-                .bold()
-            
-            Text("Jane Doe")
-                .font(.title3)
+            VStack {
+                Text("Welcome Back")
+                    .font(.title2)
+                    .bold()
+                
+                Text("Jane Doe")
+                    .font(.title3)
+            }
             
             // Passcode boxes
             HStack(spacing: 16) {
                 ForEach(0..<maxDigits, id: \.self) { index in
-                    Circle()
+                    Rectangle()
                         .fill(index < passcode.count ? Color.blue : Color.gray.opacity(0.3))
-                        .frame(width: 20, height: 20)
+                        .frame(width: 55, height: 50)
+                        
                 }
             }
             .padding(.vertical)
+            .padding(.horizontal,30)
             
             // Keypad
             VStack(spacing: 16) {

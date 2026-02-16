@@ -103,25 +103,49 @@ struct OnboardingView: View {
 ////////////////////////////////////////////////////////////
 
 // MARK: - Sheet
+
+// MARK: - Sheet
 struct CreateAccountSheet: View {
     let onCancel: () -> Void
     let onCreate: () -> Void
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 54) {
+        VStack(spacing: 0) {
+            // MARK: Header
+            HStack {
+                Text("Create an account")
+                    .font(.headline)
+                    .bold()
                 
-                Text("By pressing accept below you agree to our Terms and Conditions. You can find out more about how we use your data in our Privacy Policy")
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 30)
-                    .padding(.top, 30)
+                Spacer()
                 
-                PrimaryButton(title: "Accept And Continue") {
-                    onCreate()
+                Button(action: onCancel) {
+                    Image(systemName: "xmark.circle.fill")
+                        .font(.title2)
+                        .foregroundColor(.gray)
                 }
-                .padding(.horizontal, 30)
-                
-                Spacer(minLength: 40)
+            }
+            .padding(.horizontal, 30)
+            .padding(.top, 20)
+            .padding(.bottom, 20)
+            
+            // MARK: Content
+            ScrollView {
+                VStack(spacing: 54) {
+                    
+                    Text("By pressing accept below you agree to our Terms and Conditions. You can find out more about how we use your data in our Privacy Policy")
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 30)
+                        .font(.AppFont(15))
+                        .lineSpacing(12)
+                    
+                    PrimaryButton(title: "Accept And Continue") {
+                        onCreate()
+                    }
+                    .padding(.horizontal, 30)
+                    
+                    Spacer(minLength: 40)
+                }
             }
         }
         .background(Color.white)
@@ -129,9 +153,8 @@ struct CreateAccountSheet: View {
     }
 }
 
-////////////////////////////////////////////////////////////
 
-// MARK: - Onboarding Page
+
 struct OnboardingPage: View {
     let page: Int
     
@@ -154,6 +177,7 @@ struct OnboardingPage: View {
     ]
     
     var body: some View {
+        
         VStack(spacing: 20) {
             
             Text(titles[page])
@@ -161,18 +185,21 @@ struct OnboardingPage: View {
                 .bold()
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 40)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 
             
             Text(subtitles[page])
                 .font(.body)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
+                .foregroundColor(.black)
+                .multilineTextAlignment(.leading)
                 .padding(.horizontal, 40)
+                .bold()
+                .frame(maxWidth: .infinity, alignment: .leading)
             
             Image(images[page])
                 .resizable()
                 .scaledToFit()
-                .frame(height: 300)
+                .frame(height: 350)
             
             Spacer()
         }

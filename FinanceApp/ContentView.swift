@@ -4,7 +4,7 @@ struct ContentView: View {
     @State private var screen: Screen = .splash
 
     enum Screen {
-        case splash, onboarding, signUp, verification, signIn, setPasscode, home  // removed accountSetup
+        case splash, onboarding, signUp, verification, signIn, setPasscode, home
     }
 
     var body: some View {
@@ -35,14 +35,13 @@ struct ContentView: View {
             }
         case .setPasscode:
             SetPasscodeView {
-                screen = .home   // go directly to home instead of accountSetup
+                screen = .home
             }
         case .home:
-            HomeView()
+            Text("🏠 Home Screen") // Placeholder for your actual HomeView
         }
     }
 }
-
 
 #Preview {
     ContentView()

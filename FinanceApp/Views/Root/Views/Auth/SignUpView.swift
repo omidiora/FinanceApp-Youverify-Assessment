@@ -56,17 +56,10 @@ struct SignUpView: View {
             
             // MARK: Bottom Section
             VStack(spacing: 16) {
-                Button {
+                PrimaryButton(title: "Create an account") {
                     onContinue()
-                } label: {
-                    Text("Create an account")
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.teal)
-                        .foregroundColor(.white)
-                        .cornerRadius(30)
                 }
+//             
                 
                 HStack(spacing: 4) {
                     Text("Already have an account?")
