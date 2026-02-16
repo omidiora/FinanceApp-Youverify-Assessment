@@ -1,9 +1,11 @@
+[!(https://youtube.com/shorts/rEXbmTXo86U?feature=share)]
+
 
 ## Running the iOS App (FinanceApp)
 
 Follow these steps to run the FinanceApp on your local machine using Xcode.
 
-``` https://youtube.com/shorts/rEXbmTXo86U?feature=share```
+
 ### 1. Clone the Repository
 ```bash
 https://github.com/omidiora/FinanceApp-Youverify-Assessment
